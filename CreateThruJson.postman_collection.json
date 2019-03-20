@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "4a6a48a9-3f80-4d43-b2cf-45401536edbb",
+		"name": "CreateThruJson",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateBoard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6eea9a2-b7e2-40e7-af39-2a2c09f96a8f",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"console.log(jsonData);",
+							"console.log('id of newly created boards=', jsonData.id);",
+							"pm.environment.set(\"boardId\",jsonData.id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.trello.com/1/boards/?key={{trellokey}}&name={{boardName}}&token={{token}}&defaultlists=false",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{trellokey}}"
+						},
+						{
+							"key": "name",
+							"value": "{{boardName}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "defaultlists",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
